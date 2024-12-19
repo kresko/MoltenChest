@@ -5,6 +5,5 @@ const getAllThreadsSql = `
 `;
 
 module.exports = {
-    getAllThreadsSql,
-    getAllThreads
+    getAllThreadsSql
 }
