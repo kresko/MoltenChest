@@ -20,7 +20,7 @@
             <% threads.forEach(thread => {%>
                 <div class="thread">
                     <h1><a href="#"><%= thread.title %></a></h1> <!-- get thread view with messages -->
-                    <p><%= thread.description %></p>
+                    <p><%= thread.text %></p>
                     <p>By <a href="#"><%= thread.email %></a></p> <!-- TODO: implement email to -->
                 </div>
             <% }) %>
