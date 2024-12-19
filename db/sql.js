@@ -1,23 +1,9 @@
-const getAllThreads = [
-    {
-        email: 'test@example.com',
-        title: 'test',
-        description: 'test description',
-    },
-    {
-        email: 'test@example.com 2',
-        title: 'test 2',
-        description: 'test description 2',
-    },
-    {
-        email: 'test@example.com 3',
-        title: 'test 3 ',
-        description: 'test description 3',
-    }
-];
-
-
+const getAllThreadsSql = `
+    SELECT t.title, t.text, u.email
+    FROM threads t
+        INNER JOIN users u on t.fk_user = u.id_user;
+`;
 
 module.exports = {
-    getAllThreads
+    getAllThreadsSql
 }
