@@ -5,18 +5,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles/styles.css">
     <title>Threads</title>
 </head>
 <body>
     <!-- header -->
     <%- include('components/header') %>
-    <section>
+    <section class="threads-panel">
         <div class="threads">
+            <div class="button-container">
+                <button class="new-thread"><a href="#">Add New Thread</a></button> <!-- get new create form -->
+            </div>
+
             <% threads.forEach(thread => {%>
                 <div class="thread">
-                    <h1><%= thread.title %></h1>
+                    <h1><a href="#"><%= thread.title %></a></h1> <!-- get thread view with messages -->
                     <p><%= thread.text %></p>
-                    <a href="#"><%= thread.email %></a>
+                    <p>By <a href="#"><%= thread.email %></a></p> <!-- TODO: implement email to -->
                 </div>
             <% }) %>
         </div>
