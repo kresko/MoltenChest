@@ -11,13 +11,17 @@
 <body>
     <!-- header -->
     <%- include('components/header') %>
-    <section>
+    <section class="threads-panel">
         <div class="threads">
+            <div class="button-container">
+                <button class="new-thread"><a href="#">Add New Thread</a></button> <!-- get new create form -->
+            </div>
+
             <% threads.forEach(thread => {%>
                 <div class="thread">
-                    <h1><%= thread.title %></h1>
+                    <h1><a href="#"><%= thread.title %></a></h1> <!-- get thread view with messages -->
                     <p><%= thread.description %></p>
-                    <a href="#"><%= thread.email %></a>
+                    <p>By <a href="#"><%= thread.email %></a></p> <!-- TODO: implement email to -->
                 </div>
             <% }) %>
         </div>

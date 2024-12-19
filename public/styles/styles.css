@@ -2,3 +2,55 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+
+}
+
+/********* Header ***********/
+
+/********* Section ***********/
+section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+section.threads-panel .threads {
+    width: 80%;
+}
+
+section.threads-panel .threads .button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+section.threads-panel .threads .button-container button{
+    margin: 20px 0;
+}
+
+section .threads .thread {
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}
+
+section .threads .thread h1 {
+    margin-bottom: 10px;
+}
+
+section .threads .thread h1 a {
+    color: #222;
+    text-decoration: none;
+}
+
+section .threads .thread h1 a:hover {
+    color: purple;
+    text-decoration: underline;
+}
+
+section .threads .thread p {
+    margin-bottom: 8px;
+}
+
+/********* Footer ***********/
