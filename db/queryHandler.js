@@ -7,10 +7,13 @@ async function getAllThreads() {
     return rows;
 }
 
-async function getMessagesByTreadId() {
+async function getMessagesByTreadId(messageId) {
+    const { rows } = await pool.query(sql.getMessagesByThreadById, [messageId]);
 
+    return rows;
 }
 
 module.exports = {
-    getAllThreads
+    getAllThreads,
+    getMessagesByTreadId
 }
