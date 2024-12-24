@@ -12,11 +12,23 @@
     <%- include('components/header') %>
     <section class="messages-panel">
         <div class="messages">
+            <div class="button-container messages-button">
+                <button><a href="/">Return to threads</a></button>
+            </div>
+
+            <div class="message">
+                <h2><%= messages[0].title %></h2>
+            </div>
+
             <% messages.forEach(message => {%>
                 <div class="message">
-                    <h1><%= message.title %></h1>
-                    <p><%= message.text %></p>
-                    <p>By <a href="#"><%= message.email %></a></p> <!-- TODO: implement email to -->
+                    <div class="message-info">
+                        <p><%= message.text %></p>
+                        <p>By <a href="#"><%= message.email %></a></p> <!-- TODO: implement email to -->
+                    </div>
+                    <div class="delete-button">
+                        <button><a href="#">Delete</a></button>
+                    </div>
                 </div>
             <% }) %>
         </div>
