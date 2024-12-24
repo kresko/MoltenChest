@@ -16,26 +16,44 @@ section {
     width: 100%;
 }
 
-section.threads-panel .threads {
+section.threads-panel .threads,
+section.messages-panel .messages{
     width: 80%;
 }
 
-section.threads-panel .threads .button-container {
+section.threads-panel .threads .button-container,
+section.messages-panel .messages .button-container {
     display: flex;
+}
+
+section.threads-panel .threads .threads-button {
     justify-content: flex-end;
 }
 
-section.threads-panel .threads .button-container button{
+section.messages-panel .messages .messages-button {
+    justify-content: flex-start;
+}
+
+section.threads-panel .threads .button-container button,
+section.messages-panel .messages .button-container button {
     margin: 20px 0;
 }
 
-section .threads .thread {
+section .threads .thread,
+section .messages .message {
+    display: flex;
+    justify-content: space-between;
     border: 1px solid #000;
     margin-bottom: 20px;
     padding: 10px 20px;
 }
 
-section .threads .thread h1 {
+section .messages .message .message-info {
+
+}
+
+section .threads .thread h1,
+section .messages .message .message-info h2 {
     margin-bottom: 10px;
 }
 
@@ -49,7 +67,8 @@ section .threads .thread h1 a:hover {
     text-decoration: underline;
 }
 
-section .threads .thread p {
+section .threads .thread p,
+section .messages .message .message-info p {
     margin-bottom: 8px;
 }
 
