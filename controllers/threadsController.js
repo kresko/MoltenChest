@@ -5,6 +5,11 @@ async function getAllThreads(req, res) {
     res.render('threads', { threads: threads });
 }
 
+async function createThread(req, res) {
+    await db.createThread();
+}
+
 module.exports = {
-    getAllThreads
+    getAllThreads,
+    createThread
 }
