@@ -13,7 +13,12 @@ async function getMessagesByTreadId(messageId) {
     return rows;
 }
 
+async function createThread() {
+    await pool.query();
+}
+
 module.exports = {
     getAllThreads,
-    getMessagesByTreadId
+    getMessagesByTreadId,
+    createThread
 }
