@@ -17,6 +17,10 @@ async function createThread() {
     await pool.query();
 }
 
+async function registerUser() {
+
+}
+
 module.exports = {
     getAllThreads,
     getMessagesByTreadId,
