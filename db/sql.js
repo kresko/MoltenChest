@@ -14,6 +14,10 @@ const getMessagesByThreadById = `
     WHERE m.fk_thread = ($1);
 `;
 
+const registerUser = `
+    INSERT INTO users(email, password, first_name, last_name, true, false)
+`;
+
 module.exports = {
     getAllThreadsSql,
     getMessagesByThreadById,
