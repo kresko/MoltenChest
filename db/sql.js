@@ -15,10 +15,22 @@ const getMessagesByThreadById = `
 `;
 
 const registerUser = `
-    INSERT INTO users(email, password, first_name, last_name, true, false)
+    INSERT INTO users(email, password, first_name, last_name, guest, admin)
+    VALUES ($1, $2, $3, $4, true, false);
+`;
+
+const getUsersByUsername = `
+    SELECT * FROM users WHERE email = ($1);
+`;
+
+const getUsersById = `
+    SELECT * FROM users WHERE id_user = ($1);
 `;
 
 module.exports = {
     getAllThreadsSql,
     getMessagesByThreadById,
+    registerUser,
+    getUsersById,
+    getUsersByUsername
 }

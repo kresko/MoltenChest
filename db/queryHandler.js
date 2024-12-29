@@ -14,15 +14,30 @@ async function getMessagesByTreadId(messageId) {
 }
 
 async function createThread() {
-    await pool.query();
+    await pool.query(); //TODO: Finish auth functionality
 }
 
-async function registerUser() {
+async function registerUser(user) {
+    await pool.query(sql.registerUser, [user.email, user.password, user.firstName, user.lastName]);
+}
 
+async function getUsersById(id) {
+    const { rows } = await pool.query(sql.getUsersById, [id]);
+
+    return rows[0];
+}
+
+async function getUsersByUsername(email) {
+    const { rows } = await pool.query(sql.getUsersByUsername, [email]);
+
+    return rows[0];
 }
 
 module.exports = {
     getAllThreads,
     getMessagesByTreadId,
-    createThread
+    createThread,
+    registerUser,
+    getUsersById,
+    getUsersByUsername
 }

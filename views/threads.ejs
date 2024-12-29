@@ -10,7 +10,11 @@
 </head>
 <body>
     <!-- header -->
-    <%- include('components/header') %>
+    <%- include('components/header') %> <!-- pass property to header component -->
+    <% console.log(locals.user) %>
+    <% if (locals.user) {%>
+        <h2>You're logged in</h2> <!-- show buttons for creating threads -->
+    <% }%>
     <section class="threads-panel">
         <div class="threads">
             <div class="button-container threads-button">

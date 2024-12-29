@@ -2,7 +2,7 @@ const db = require("../db/queryHandler");
 
 async function getAllThreads(req, res) {
     const threads = await db.getAllThreads();
-    res.render('threads', { threads: threads });
+    res.render('threads', { threads: threads, user: req.user });
 }
 
 async function createThread(req, res) {
