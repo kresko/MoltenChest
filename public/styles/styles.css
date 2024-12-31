@@ -72,4 +72,39 @@ section .messages .message .message-info p {
     margin-bottom: 8px;
 }
 
+/********* Form ***********/
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container #login-form,
+.form-container #register-form {
+    width: 20%;
+    display: inherit;
+    flex-direction: column;
+}
+
+.form-container #login-form h2,
+.form-container #register-form h2,
+.form-container #login-form input,
+.form-container #register-form input {
+    margin-bottom: 15px;
+}
+
+.form-container #login-form input,
+.form-container #register-form input {
+    padding: 8px;
+}
+
+.form-container #login-form label,
+.form-container #register-form label {
+    margin-bottom: 5px;
+}
+
+.form-container #login-form button,
+.form-container #register-form button {
+    padding: 10px 20px;
+}
+
 /********* Footer ***********/
