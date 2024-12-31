@@ -1,7 +1,16 @@
 <header>
-    <h1>header</h1>
+    <nav>
+        <div class="home-button-container">
+            <button><a href="/">Home</a></button>
+        </div>
 
-    <button><a href="/">Home</a></button>
-    <button><a href="/login">Login</a></button> <!-- hide button -->
-    <button><a href="/register">Register</a></button> <!-- hide button -->
+        <div class="auth-button-container">
+            <% if (!user) {%>
+                <button><a href="/login">Login</a></button>
+                <button><a href="/register">Register</a></button>
+            <%} else {%>
+                <button><a href="/log-out">Logout</a></button>
+            <% }%>
+        </div>
+    </nav>
 </header>

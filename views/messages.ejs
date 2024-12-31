@@ -9,7 +9,7 @@
     <title>Messages</title>
 </head>
 <body>
-    <%- include('components/header') %>
+    <%- include('components/header', { user: locals.user }) %>
     <section class="messages-panel">
         <div class="messages">
             <div class="button-container messages-button">
@@ -17,7 +17,11 @@
             </div>
 
             <div class="message">
+                <% if (messages[0]) {%>
                 <h2><%= messages[0].title %></h2>
+                <% } else { %>
+                    <h2>There is no messages in this thread</h2>
+                <%}%>
             </div>
 
             <% messages.forEach(message => {%>
@@ -26,11 +30,23 @@
                         <p><%= message.text %></p>
                         <p>By <a href="#"><%= message.email %></a></p> <!-- TODO: implement email to -->
                     </div>
-                    <div class="delete-button">
-                        <button><a href="#">Delete</a></button>
-                    </div>
+                    <% if (locals.user && locals.user.admin) {%>
+                        <div class="delete-button">
+                            <button><a href="#">Delete</a></button>
+                        </div>
+                    <%}%>
                 </div>
             <% }) %>
+
+            <form id="new-message-form" action="/create-message/<%= threadId %>" method="post"> <!-- dodaj stilove -->
+                <input id='newMessage' name='newMessage' placeholder="Add new message" type="text">
+
+                <button>Add</button>
+            </form>
+
+            <% if (locals.user) {%>
+
+            <%}%>
         </div>
     </section>
     <%- include('components/footer') %>

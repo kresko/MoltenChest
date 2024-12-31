@@ -1,5 +1,6 @@
 const pool = require('./pool');
 const sql = require('./sql');
+const bcrypt = require("bcryptjs");
 
 async function getAllThreads() {
     const { rows } = await pool.query(sql.getAllThreadsSql);
@@ -13,12 +14,17 @@ async function getMessagesByTreadId(messageId) {
     return rows;
 }
 
-async function createThread() {
-    await pool.query(); //TODO: Finish auth functionality
+async function createThread(user, thread) {
+    await pool.query(sql.insertThread, [thread.threadTitle, thread.threadMessage, user.id_user]);
+}
+
+async function insertMessage(user, message, threadId) {
+    await pool.query(sql.insertMessage, [message.newMessage, threadId, user.id_user]);
 }
 
 async function registerUser(user) {
-    await pool.query(sql.registerUser, [user.email, user.password, user.firstName, user.lastName]);
+    const hashedPassword = await bcrypt.hash(user.password, 10);
+    await pool.query(sql.registerUser, [user.email, hashedPassword, user.firstName, user.lastName]);
 }
 
 async function getUsersById(id) {
@@ -37,6 +43,7 @@ module.exports = {
     getAllThreads,
     getMessagesByTreadId,
     createThread,
+    insertMessage,
     registerUser,
     getUsersById,
     getUsersByUsername

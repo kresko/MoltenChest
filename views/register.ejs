@@ -9,7 +9,7 @@
     <title>Register</title>
 </head>
 <body>
-    <%- include('components/header') %>
+    <%- include('components/header', { user: locals.user}) %>
 
     <div class="form-container">
         <form id="register-form" action="/register" method="POST">

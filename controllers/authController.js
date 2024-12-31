@@ -41,7 +41,7 @@ async function renderRegisterForm(req, res) {
 async function registerUser(req, res, next) {
     try {
         await db.registerUser(req.body);
-        res.render('/');
+        res.redirect('/');
     } catch(err) {
         return next(err);
     }
