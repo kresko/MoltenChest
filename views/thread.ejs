@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Thread</title>
+</head>
+<body>
+    <!-- header -->
+    <%- include('components/header', { user: locals.user}) %> <!-- pass property to header component -->
+    <div class="form-container">
+        <form id="thread-form" action="/create-thread" method="post">
+            <h2>Add new thread</h2>
+
+            <label for="threadTitle">Thread title:</label>
+            <input id="threadTitle" name="threadTitle" placeholder="title" type="text"/>
+
+            <label for="threadMessage">Thread message</label>
+            <input id="threadMessage" name="threadMessage" placeholder="threadMessage" type="text"/>
+
+            <button>Create</button>
+        </form>
+    </div>
+    <!-- footer -->
+    <%- include('components/footer') %>
+</body>
+</html>

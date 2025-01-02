@@ -4,13 +4,24 @@ const getAllThreadsSql = `
         INNER JOIN users u on t.fk_user = u.id_user;
 `;
 
+const insertThread = `
+    INSERT INTO threads(title, text, fk_user)
+    VALUES ($1, $2, $3);
+`;
+
+// provjeri
+const insertMessage = `
+    INSERT INTO messages(text, fk_thread ,fk_user)
+    VALUES ($1, $2, $3);
+`
+
 const getMessagesByThreadById = `
     SELECT t.title AS title
          , m.text AS text
          , u.email AS email
     FROM messages m
              INNER JOIN threads t on m.fk_thread = t.id_thread
-             INNER JOIN users u on t.fk_user = u.id_user
+             INNER JOIN users u on m.fk_user = u.id_user
     WHERE m.fk_thread = ($1);
 `;
 
@@ -32,5 +43,7 @@ module.exports = {
     getMessagesByThreadById,
     registerUser,
     getUsersById,
-    getUsersByUsername
+    getUsersByUsername,
+    insertThread,
+    insertMessage
 }

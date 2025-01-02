@@ -4,16 +4,50 @@
 }
 
 body {
-
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /********* Header ***********/
+header {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    background: #0082ea;
+}
+
+header nav {
+    width: 100%;
+    display: inherit;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header nav button {
+    border: 1px solid #fff;
+    background: none;
+    padding: 8px 0;
+}
+
+header nav button a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+}
 
 /********* Section ***********/
 section {
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+section.threads-panel {
+    padding-top: 30px;
 }
 
 section.threads-panel .threads,
@@ -32,6 +66,20 @@ section.threads-panel .threads .threads-button {
 
 section.messages-panel .messages .messages-button {
     justify-content: flex-start;
+}
+
+section.threads-panel .threads .threads-button button,
+section.messages-panel .messages .messages-button button {
+    border: 1px solid #0082ea;
+    background: none;
+    padding: 8px 0;
+}
+
+section.threads-panel .threads .threads-button button a,
+section.messages-panel .messages .messages-button button a {
+    color: #0082ea;
+    text-decoration: none;
+    padding: 8px 16px;
 }
 
 section.threads-panel .threads .button-container button,
@@ -76,10 +124,12 @@ section .messages .message .message-info p {
 .form-container {
     display: flex;
     justify-content: center;
+    margin: 20px 0;
 }
 
 .form-container #login-form,
-.form-container #register-form {
+.form-container #register-form,
+.form-container #thread-form {
     width: 20%;
     display: inherit;
     flex-direction: column;
@@ -87,24 +137,45 @@ section .messages .message .message-info p {
 
 .form-container #login-form h2,
 .form-container #register-form h2,
+.form-container #thread-form h2,
 .form-container #login-form input,
-.form-container #register-form input {
+.form-container #register-form input,
+.form-container #thread-form input{
     margin-bottom: 15px;
 }
 
 .form-container #login-form input,
-.form-container #register-form input {
+.form-container #register-form input,
+.form-container #thread-form input {
     padding: 8px;
 }
 
 .form-container #login-form label,
-.form-container #register-form label {
+.form-container #register-form label,
+.form-container #thread-form label {
     margin-bottom: 5px;
 }
 
 .form-container #login-form button,
-.form-container #register-form button {
+.form-container #register-form button,
+.form-container #thread-form button {
     padding: 10px 20px;
 }
 
 /********* Footer ***********/
+footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    background: #0082ea;
+}
+
+footer .container {
+    display: inherit;
+    align-items: center;
+}
+
+footer .container p {
+    color: #fff;
+}
