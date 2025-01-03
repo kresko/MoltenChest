@@ -4,19 +4,44 @@ const getAllThreadsSql = `
         INNER JOIN users u on t.fk_user = u.id_user;
 `;
 
+const getThreadByMessageId = `
+    SELECT m.fk_thread 
+    FROM messages m 
+    WHERE m.id_messages = ($1);
+`;
+
 const insertThread = `
     INSERT INTO threads(title, text, fk_user)
     VALUES ($1, $2, $3);
 `;
 
-// provjeri
+const deleteThread = `
+    DELETE FROM threads WHERE id_thread = ($1);
+`;
+
 const insertMessage = `
     INSERT INTO messages(text, fk_thread ,fk_user)
     VALUES ($1, $2, $3);
-`
+`;
+
+const deleteMessage = `
+    DELETE FROM messages WHERE id_messages = ($1);
+`;
+
+const dropMessageConstraints = `
+    ALTER TABLE messages DROP CONSTRAINT messages_fk_thread_fkey;
+`;
+
+const addMessageConstraints = `
+    ALTER TABLE messages
+        ADD CONSTRAINT messages_fk_thread_fkey
+            FOREIGN KEY (fk_thread) REFERENCES threads(id_thread)
+                ON DELETE CASCADE;
+`;
 
 const getMessagesByThreadById = `
-    SELECT t.title AS title
+    SELECT m.id_messages 
+        , t.title AS title
          , m.text AS text
          , u.email AS email
     FROM messages m
@@ -26,8 +51,8 @@ const getMessagesByThreadById = `
 `;
 
 const registerUser = `
-    INSERT INTO users(email, password, first_name, last_name, guest, admin)
-    VALUES ($1, $2, $3, $4, true, false);
+    INSERT INTO users(email, password, first_name, last_name, admin)
+    VALUES ($1, $2, $3, $4,  false);
 `;
 
 const getUsersByUsername = `
@@ -40,10 +65,15 @@ const getUsersById = `
 
 module.exports = {
     getAllThreadsSql,
+    getThreadByMessageId,
     getMessagesByThreadById,
     registerUser,
     getUsersById,
     getUsersByUsername,
     insertThread,
-    insertMessage
+    deleteThread,
+    insertMessage,
+    deleteMessage,
+    dropMessageConstraints,
+    addMessageConstraints,
 }

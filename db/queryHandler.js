@@ -8,6 +8,12 @@ async function getAllThreads() {
     return rows;
 }
 
+async function getThreadByMessageId(messageId) {
+    const { rows } = await pool.query(sql.getThreadByMessageId, [messageId]);
+
+    return rows[0];
+}
+
 async function getMessagesByTreadId(messageId) {
     const { rows } = await pool.query(sql.getMessagesByThreadById, [messageId]);
 
@@ -18,8 +24,20 @@ async function createThread(user, thread) {
     await pool.query(sql.insertThread, [thread.threadTitle, thread.threadMessage, user.id_user]);
 }
 
+async function deleteThread(threadId) {
+    await pool.query(sql.dropMessageConstraints);
+    await pool.query(sql.addMessageConstraints);
+    await pool.query(sql.deleteThread, [threadId]);
+}
+
 async function insertMessage(user, message, threadId) {
     await pool.query(sql.insertMessage, [message.newMessage, threadId, user.id_user]);
+}
+
+async function deleteMessage(messageId) {
+    await pool.query(sql.dropMessageConstraints);
+    await pool.query(sql.addMessageConstraints);
+    await pool.query(sql.deleteMessage, [messageId]);
 }
 
 async function registerUser(user) {
@@ -41,9 +59,12 @@ async function getUsersByUsername(email) {
 
 module.exports = {
     getAllThreads,
+    getThreadByMessageId,
     getMessagesByTreadId,
     createThread,
+    deleteThread,
     insertMessage,
+    deleteMessage,
     registerUser,
     getUsersById,
     getUsersByUsername
