@@ -162,6 +162,21 @@ section .messages .message .message-info p {
     padding: 10px 20px;
 }
 
+#new-message-form {
+    display: flex;
+    margin: 25px 0 40px 0;
+}
+
+#new-message-form input {
+    width: 50%;
+    padding: 0 20px;
+}
+
+#new-message-form button {
+    width: 60px;
+    height: 40px;
+}
+
 /********* Footer ***********/
 footer {
     display: flex;

@@ -14,7 +14,16 @@ async function createMessage(req, res) {
     await getMessagesByThreadById(req, res);
 }
 
+async function deleteMessage(req, res) {
+    const messageId = req.params.id;
+    const threadId = await db.getThreadByMessageId(messageId);
+    await db.deleteMessage(messageId);
+    const messages = await db.getMessagesByTreadId(threadId);
+    res.render('messages', { messages: messages, user: req.user, threadId: threadId });
+}
+
 module.exports = {
     getMessagesByThreadById,
-    createMessage
+    createMessage,
+    deleteMessage
 }

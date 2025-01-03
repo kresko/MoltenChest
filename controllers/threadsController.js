@@ -17,8 +17,16 @@ async function createThread(req, res) {
     return res.redirect('/');
 }
 
+async function deleteThread(req, res) {
+    const threadId = req.params.id;
+    await db.deleteThread(threadId);
+
+    return res.redirect('/');
+}
+
 module.exports = {
     getAllThreads,
     renderThreadForm,
-    createThread
+    createThread,
+    deleteThread
 }
