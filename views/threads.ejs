@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/4446a25d04.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/styles/styles.css">
     <title>Threads</title>
 </head>
@@ -13,22 +14,29 @@
     <%- include('components/header', { user: locals.user}) %>
     <section class="threads-panel">
         <div class="threads">
+
+            <% if (!threads[0]) {%>
+                <div class="thread">
+                    <h2>There is no threads in this thread</h2>
+                </div>
+            <% } %>
+
             <div class="button-container threads-button">
                 <% if (locals.user) {%>
                     <button class="new-thread"><a href="/add-new-thread">Add New Thread</a></button>
                 <%}%>
             </div>
 
-            <% threads.forEach(thread => {%>
+            <% threads.forEach(thread => { %>
                 <div class="thread">
                     <div class="thread-info">
                         <h1><a href="/messages/get-messages/<%= thread.id_thread%>"><%= thread.title %></a></h1>
                         <p><%= thread.text %></p>
-                        <p>By <a href="#"><%= thread.email %></a></p> <!-- TODO: implement email to -->
+                        <p>By <a href="#"><%= thread.email %></a><% if (thread.admin) {%><i class="fa-solid fa-kiwi-bird"></i> <%}%></p> <!-- TODO: implement email to -->
                     </div>
                     <% if (locals.user && locals.user.admin) {%>
-                        <div class="delete-button"> <!-- change to bin icon -->
-                            <button><a href="/delete-thread/<%= thread.id_thread %>">Delete</a></button>
+                        <div class="delete-button">
+                            <button><a href="/delete-thread/<%= thread.id_thread %>"><i class="fa-solid fa-trash"></i></a></button>
                         </div>
                     <%}%>
                 </div>

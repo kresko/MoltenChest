@@ -69,14 +69,18 @@ section.messages-panel .messages .messages-button {
 }
 
 section.threads-panel .threads .threads-button button,
-section.messages-panel .messages .messages-button button {
+section.threads-panel .thread .delete-button button,
+section.messages-panel .messages .messages-button button,
+section.messages-panel .message .delete-button button {
     border: 1px solid #0082ea;
     background: none;
     padding: 8px 0;
 }
 
 section.threads-panel .threads .threads-button button a,
-section.messages-panel .messages .messages-button button a {
+section.threads-panel .thread .delete-button button a,
+section.messages-panel .messages .messages-button button a,
+section.messages-panel .message .delete-button button a {
     color: #0082ea;
     text-decoration: none;
     padding: 8px 16px;
@@ -118,6 +122,12 @@ section .threads .thread h1 a:hover {
 section .threads .thread p,
 section .messages .message .message-info p {
     margin-bottom: 8px;
+}
+
+section .messages .message .message-info p i,
+section .threads .thread .thread-info p i {
+    margin-left: 8px;
+    color: #830b0b;
 }
 
 /********* Form ***********/
