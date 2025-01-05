@@ -3,6 +3,8 @@ const threadsRouter = Router();
 const threadsController = require('../controllers/threadsController');
 
 threadsRouter.get("/", threadsController.getAllThreads);
-threadsRouter.get('/create-thread', threadsController.createThread);
+threadsRouter.get("/add-new-thread", threadsController.renderThreadForm);
+threadsRouter.post('/create-thread', threadsController.createThread);
+threadsRouter.get('/delete-thread/:id', threadsController.deleteThread);
 
 module.exports = threadsRouter;
