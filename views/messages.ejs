@@ -32,20 +32,18 @@
                     </div>
                     <% if (locals.user && locals.user.admin) {%>
                         <div class="delete-button">
-                            <button><a href="#">Delete</a></button>
+                            <button><a href="/delete-message/<%= message.id_messages %>">Delete</a></button>
                         </div>
                     <%}%>
                 </div>
             <% }) %>
 
-            <form id="new-message-form" action="/create-message/<%= threadId %>" method="post"> <!-- dodaj stilove -->
-                <input id='newMessage' name='newMessage' placeholder="Add new message" type="text">
-
-                <button>Add</button>
-            </form>
-
             <% if (locals.user) {%>
+                <form id="new-message-form" action="/create-message/<%= threadId %>" method="post"> <!-- dodaj stilove -->
+                    <input id='newMessage' name='newMessage' placeholder="Add new message" type="text">
 
+                    <button>Add</button>
+                </form>
             <%}%>
         </div>
     </section>
