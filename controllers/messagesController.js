@@ -11,15 +11,21 @@ async function createMessage(req, res) {
     const message = req.body;
     const threadId = req.params.id;
     await db.insertMessage(user, message, threadId);
-    await getMessagesByThreadById(req, res);
+    res.redirect(`/messages/get-messages/${threadId}`);
+    //await getMessagesByThreadById(req, res);
 }
 
 async function deleteMessage(req, res) {
     const messageId = req.params.id;
     const threadId = await db.getThreadByMessageId(messageId);
     await db.deleteMessage(messageId);
-    const messages = await db.getMessagesByTreadId(threadId);
-    res.render('messages', { messages: messages, user: req.user, threadId: threadId });
+    const messages = await db.getMessagesByTreadId(threadId.fk_thread); // obrisi ovo
+    res.redirect(`/messages/get-messages/${threadId.fk_thread}`);
+    //res.render('messages', { messages: messages, user: req.user, threadId: threadId });
+}
+
+async function isUserAdmin(user) {
+    return 'test';
 }
 
 module.exports = {

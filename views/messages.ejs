@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/4446a25d04.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/styles/styles.css">
     <title>Messages</title>
 </head>
@@ -28,18 +29,18 @@
                 <div class="message">
                     <div class="message-info">
                         <p><%= message.text %></p>
-                        <p>By <a href="#"><%= message.email %></a></p> <!-- TODO: implement email to -->
+                        <p>By <a href="#"><%= message.email %></a><% if (message.admin) {%><i class="fa-solid fa-kiwi-bird"></i> <%}%></p> <!-- TODO: implement email to -->
                     </div>
                     <% if (locals.user && locals.user.admin) {%>
                         <div class="delete-button">
-                            <button><a href="/delete-message/<%= message.id_messages %>">Delete</a></button>
+                            <button><a href="/delete-message/<%= message.id_messages %>"><i class="fa-solid fa-trash"></i></a></button>
                         </div>
                     <%}%>
                 </div>
             <% }) %>
 
             <% if (locals.user) {%>
-                <form id="new-message-form" action="/create-message/<%= threadId %>" method="post"> <!-- dodaj stilove -->
+                <form id="new-message-form" action="/create-message/<%= threadId %>" method="post">
                     <input id='newMessage' name='newMessage' placeholder="Add new message" type="text">
 
                     <button>Add</button>

@@ -1,5 +1,5 @@
 const getAllThreadsSql = `
-    SELECT t.id_thread, t.title, t.text, u.email
+    SELECT t.id_thread, t.title, t.text, u.email, u.admin
     FROM threads t
         INNER JOIN users u on t.fk_user = u.id_user;
 `;
@@ -44,6 +44,7 @@ const getMessagesByThreadById = `
         , t.title AS title
          , m.text AS text
          , u.email AS email
+         , u.admin AS admin
     FROM messages m
              INNER JOIN threads t on m.fk_thread = t.id_thread
              INNER JOIN users u on m.fk_user = u.id_user
